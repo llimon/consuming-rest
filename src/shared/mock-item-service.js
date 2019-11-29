@@ -1,3 +1,4 @@
+
 class ItemService {
 
   constructor() {
@@ -13,30 +14,47 @@ class ItemService {
   }
 
   async getItem(itemLink) {
-    console.warn("ItemService.getItem():");
+    console.log("ItemService.getItem():");
     for(var i = 0; i < this.items.length; i++) {
       if ( this.items[i].link === itemLink) {
         return Promise.resolve(this.items[i]);
       }
     }
+
     return null;
   }
 
   async createItem(item) {
     console.log("ItemService.createItem():");
+
+    const uuidv1 = require('uuid/v1');
+    var newUUID = uuidv1()
+    console.log("ItemService.createItem().newUUID:" + newUUID );
+    item.link = newUUID;
+
     this.items.push(item);
     console.log(item);
     return Promise.resolve(item);
   }
 
-  async deleteItem(itemId) {
+  async deleteItem(itemLink) {
     console.log("ItemService.deleteItem():");
-    this.items.splice(2, 1)
-    console.log("item ID:" + itemId);
+    console.log("ItemService.deleteItem():itemLink" + itemLink);
+    for(var i = 0; i < this.items.length; i++) {
+      if ( this.items[i].link === itemLink) {
+        this.items.splice(i, 1);
+      }
+    }
+    console.log("item ID:" + itemLink);
   }
 
   async updateItem(item) {
     console.log("ItemService.updateItem():");
+    for(var i = 0; i < this.items.length; i++) {
+      if ( this.items[i].link === item.link) {
+        this.items[i] = item;
+      }
+    }
     console.log(item);
   }
 
