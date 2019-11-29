@@ -27,6 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+      console.log("componentDidMount");
       this.getItems();
   }
 
@@ -59,6 +60,7 @@ class App extends Component {
   }
 
   getItems() {
+    console.log("getItems");
     this.itemService.retrieveItems().then(items => {
           this.setState({items: items});
         }
@@ -66,6 +68,7 @@ class App extends Component {
   }
 
   onSelect(itemLink) {
+    console.log( "onSelect");
     this.clearState();
     this.itemService.getItem(itemLink).then(item => {
       this.setState({
@@ -77,10 +80,12 @@ class App extends Component {
   }
 
   onCancel() {
+    console.log("onCancel");
     this.clearState();
   }
 
   onNewItem() {
+    console.log( "OnNewItem");
     this.clearState();
     this.setState({
       newItem: true
@@ -88,6 +93,7 @@ class App extends Component {
   }
 
   onEditItem() {
+    console.log( "onEditItem");
     this.setState({
       showDetails: false,
       editItem: true,
@@ -96,6 +102,7 @@ class App extends Component {
   }
 
   onCancelEdit() {
+    console.log("onCancelEdit");
     this.setState({
       showDetails: true,
       editItem: false,
@@ -104,6 +111,7 @@ class App extends Component {
   }
 
   onUpdateItem(item) {
+    console.log("onUpdateItem");
     this.clearState();
     this.itemService.updateItem(item).then(item => {
         this.getItems();
@@ -112,6 +120,7 @@ class App extends Component {
   }
 
   onCreateItem(newItem) {
+    console.log( "onCreateItem");
     this.clearState();
     this.itemService.createItem(newItem).then(item => {
         this.getItems();
@@ -120,6 +129,7 @@ class App extends Component {
   }
 
   onDeleteItem(itemLink) {
+    console.log("onDeleteItem");
     this.clearState();
     this.itemService.deleteItem(itemLink).then(res => {
         this.getItems();
@@ -128,6 +138,7 @@ class App extends Component {
   }
 
   clearState() {
+    console.log("clearState");
     this.setState({
       showDetails: false,
       selectedItem: null,

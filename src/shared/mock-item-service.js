@@ -13,6 +13,7 @@ class ItemService {
   }
 
   async getItem(itemLink) {
+    console.warn("ItemService.getItem():");
     for(var i = 0; i < this.items.length; i++) {
       if ( this.items[i].link === itemLink) {
         return Promise.resolve(this.items[i]);
@@ -23,12 +24,14 @@ class ItemService {
 
   async createItem(item) {
     console.log("ItemService.createItem():");
+    this.items.push(item);
     console.log(item);
     return Promise.resolve(item);
   }
 
   async deleteItem(itemId) {
     console.log("ItemService.deleteItem():");
+    this.items.splice(2, 1)
     console.log("item ID:" + itemId);
   }
 

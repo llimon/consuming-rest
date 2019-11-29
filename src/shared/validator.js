@@ -14,7 +14,7 @@ class Validator {
     if(inputData.country.length > 0 && !inputData.country.match(/^[a-z|A-Z][a-z|A-Z]$/)) {
       errorMsg +="Country code must be two letters.\n"
     }
-    if(errorMsg.length == 0){
+    if(errorMsg.length === 0){
       return true;
     } else {
       alert(errorMsg);
