@@ -3,7 +3,8 @@ import './App.css';
 import ItemDetails from './item-details';
 import NewItem from './new-item';
 import EditItem from './edit-item';
-import ItemService from './shared/mock-item-service';
+//import ItemService from './shared/mock-item-service';
+import ItemService from './shared/item-service';
 
 class App extends Component {
 

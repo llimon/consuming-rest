@@ -26,9 +26,18 @@ class EditItem extends Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
+    if (event.name === "year"){
+      this.setState({
+        [name]: parseInt(value, 10)
+      });
+  
+    } else {
+      this.setState({
+        [name]: value
+      });
+  
+    }
+
   }
 
   onCancel() {

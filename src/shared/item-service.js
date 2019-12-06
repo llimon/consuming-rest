@@ -18,7 +18,8 @@ class ItemService {
         console.log("Retrieved items:");
         console.log(json);
         const items = [];
-        const itemArray = json._embedded.collectionItems;
+        //const itemArray = json._embedded.collectionItems;
+        const itemArray = json._embedded.users;
         for(var i = 0; i < itemArray.length; i++) {
           itemArray[i]["link"] =  itemArray[i]._links.self.href;
           items.push(itemArray[i]);
